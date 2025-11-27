@@ -1,0 +1,21 @@
+.offer-card {
+    transition: transform var(--transition-fast);
+    border-left: 4px solid transparent;
+}
+
+.offer-card:hover {
+    transform: translateY(-2px);
+}
+
+/* Status borders */
+.offer-card:has(.bg-warning) {
+    border-left-color: var(--warning);
+}
+
+.offer-card:has(.bg-success) {
+    border-left-color: var(--success);
+}
+
+.offer-card:has(.bg-danger) {
+    border-left-color: var(--danger);
+}

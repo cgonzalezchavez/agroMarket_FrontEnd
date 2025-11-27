@@ -1,0 +1,77 @@
+.navbar {
+    box-shadow: var(--shadow-md);
+    transition: all var(--transition-normal);
+}
+
+.navbar-brand {
+    font-size: 1.5rem;
+    letter-spacing: -0.5px;
+}
+
+.navbar-brand:hover {
+    transform: scale(1.05);
+    transition: transform var(--transition-fast);
+}
+
+.nav-link {
+    position: relative;
+    transition: all var(--transition-fast);
+    padding: 0.5rem 1rem;
+}
+
+.nav-link:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: var(--radius-md);
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background-color: var(--white);
+    transition: all var(--transition-fast);
+    transform: translateX(-50%);
+}
+
+.nav-link:hover::after {
+    width: 80%;
+}
+
+.dropdown-menu {
+    border: none;
+    box-shadow: var(--shadow-lg);
+    border-radius: var(--radius-md);
+    margin-top: 0.5rem;
+}
+
+.dropdown-item {
+    transition: all var(--transition-fast);
+    padding: 0.75rem 1.25rem;
+}
+
+.dropdown-item:hover {
+    background-color: var(--primary-green-light);
+    color: var(--white);
+    transform: translateX(5px);
+}
+
+.dropdown-item.text-danger:hover {
+    background-color: var(--danger);
+    color: var(--white);
+}
+
+@media (max-width: 991px) {
+    .navbar-collapse {
+        background-color: rgba(60, 122, 62, 0.95);
+        padding: 1rem;
+        border-radius: var(--radius-md);
+        margin-top: 1rem;
+    }
+
+    .nav-link::after {
+        display: none;
+    }
+}

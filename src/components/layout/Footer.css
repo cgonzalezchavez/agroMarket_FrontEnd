@@ -1,0 +1,26 @@
+.footer {
+    margin-top: auto;
+    border-top: 3px solid var(--primary-green);
+}
+
+.footer-link {
+    color: var(--gray-400);
+    text-decoration: none;
+    transition: all var(--transition-fast);
+    display: inline-block;
+}
+
+.footer-link:hover {
+    color: var(--primary-green-light);
+    transform: translateX(3px);
+}
+
+.footer h5,
+.footer h6 {
+    font-weight: 600;
+    margin-bottom: var(--spacing-md);
+}
+
+.footer ul li {
+    margin-bottom: var(--spacing-sm);
+}

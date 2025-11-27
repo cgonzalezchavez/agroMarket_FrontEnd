@@ -1,0 +1,11 @@
+.object-fit-cover {
+    object-fit: cover;
+}
+
+.bg-success-subtle {
+    background-color: rgba(60, 122, 62, 0.1) !important;
+}
+
+.text-success {
+    color: var(--primary-green) !important;
+}

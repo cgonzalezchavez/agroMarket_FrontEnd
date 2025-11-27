@@ -1,0 +1,8 @@
+.reputation-badge .stars {
+    display: flex;
+    gap: 2px;
+}
+
+.reputation-badge.fs-4 .stars {
+    gap: 4px;
+}
