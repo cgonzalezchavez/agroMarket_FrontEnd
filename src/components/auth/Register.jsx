@@ -11,7 +11,7 @@ const Register = () => {
     email: '',
     password: '',
     confirmPassword: '',
-    role: 'buyer',
+    role: 'BUYER',
     phone: '',
     address: ''
   })
@@ -164,8 +164,8 @@ const Register = () => {
                       onChange={handleChange}
                       required
                     >
-                      <option value="buyer">Comprador</option>
-                      <option value="seller">Vendedor</option>
+                      <option value="BUYER">Comprador</option>
+                      <option value="PRODUCER">Productor</option>
                     </select>
                   </div>
 
@@ -182,7 +182,7 @@ const Register = () => {
                         name="phone"
                         value={formData.phone}
                         onChange={handleChange}
-                        placeholder="+1 234 567 890"
+                        placeholder="09** ***-***"
                       />
                     </div>
 

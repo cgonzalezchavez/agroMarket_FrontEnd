@@ -27,6 +27,7 @@ const OfferForm = ({ lotId, lotTitle, onClose, onSuccess }) => {
     setLoading(true)
 
     try {
+      console.log(formData,lotId)
       // await offerService.createOffer({ ...formData, lotId })
       setSuccess('Oferta enviada exitosamente')
       setTimeout(() => {
@@ -54,7 +55,7 @@ const OfferForm = ({ lotId, lotTitle, onClose, onSuccess }) => {
         <div className="mb-3">
           <label htmlFor="amount" className="form-label">Precio Oferta (por unidad)</label>
           <div className="input-group">
-            <span className="input-group-text">$</span>
+            <span className="input-group-text">Gs.</span>
             <input
               type="number"
               className="form-control"

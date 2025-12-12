@@ -27,6 +27,7 @@ const LotDetail = () => {
       // Try to fetch from API
       try {
         const data = await lotService.getLotById(id)
+        console.log(data)
         setLot(data)
       } catch (err) {
         console.warn('API fetch failed, using mock data', err)
@@ -64,9 +65,9 @@ const LotDetail = () => {
   }
 
   const formatPrice = (price) => {
-    return new Intl.NumberFormat('es-AR', {
+    return new Intl.NumberFormat('es-PY', {
       style: 'currency',
-      currency: 'ARS',
+      currency: 'PYG',
       minimumFractionDigits: 0
     }).format(price)
   }
@@ -80,7 +81,7 @@ const LotDetail = () => {
       <nav aria-label="breadcrumb" className="mb-4">
         <ol className="breadcrumb">
           <li className="breadcrumb-item"><Link to="/">Inicio</Link></li>
-          <li className="breadcrumb-item active" aria-current="page">{lot.title}</li>
+          <li className="breadcrumb-item active" aria-current="page">{lot.commodity_name}</li>
         </ol>
       </nav>
 
@@ -90,7 +91,7 @@ const LotDetail = () => {
           <div className="card border-0 shadow-sm overflow-hidden rounded-4">
             <img 
               src={lot.image} 
-              alt={lot.title} 
+              alt={lot.commodity_name} 
               className="img-fluid w-100 object-fit-cover"
               style={{ maxHeight: '500px' }}
             />
@@ -98,7 +99,7 @@ const LotDetail = () => {
           
           <div className="mt-5">
             <h3 className="fw-bold mb-3">Descripción</h3>
-            <p className="text-muted lead fs-6">{lot.description}</p>
+            <p className="text-muted lead fs-6">{lot.variety}</p>
             
             <h4 className="fw-bold mt-4 mb-3">Especificaciones</h4>
             <div className="row g-3">
@@ -120,14 +121,14 @@ const LotDetail = () => {
             <div className="card-body p-4">
               <div className="d-flex justify-content-between align-items-start mb-3">
                 <span className="badge bg-success-subtle text-success px-3 py-2 rounded-pill">
-                  {lot.category}
+                  {lot.status}
                 </span>
                 <span className="text-muted small">
-                  Publicado {new Date(lot.createdAt).toLocaleDateString()}
+                  Publicado {new Date(lot.created_at).toLocaleDateString('es-PY', {day: '2-digit', month: '2-digit', year: 'numeric'})}
                 </span>
               </div>
 
-              <h1 className="fw-bold mb-2">{lot.title}</h1>
+              <h1 className="fw-bold mb-2">{lot.commodity_name}</h1>
               
               <div className="d-flex align-items-center mb-4">
                 <i className="bi bi-geo-alt-fill text-danger me-2"></i>
@@ -141,7 +142,7 @@ const LotDetail = () => {
                   <div>
                     <small className="text-muted d-block mb-1">Precio por {lot.unit}</small>
                     <span className="display-6 fw-bold text-green">
-                      {formatPrice(lot.price)}
+                      {formatPrice(lot.price_base)}
                     </span>
                   </div>
                   <div className="text-end">
@@ -159,14 +160,14 @@ const LotDetail = () => {
                   <i className="bi bi-person-fill fs-4 text-secondary"></i>
                 </div>
                 <div>
-                  <h6 className="mb-0 fw-bold">{lot.seller?.name}</h6>
+                  <h6 className="mb-0 fw-bold">{lot.producer_name}</h6>
                   <div className="d-flex align-items-center small">
                     <i className="bi bi-star-fill text-warning me-1"></i>
-                    <span className="fw-bold me-1">{lot.seller?.reputation}</span>
-                    <span className="text-muted">({lot.seller?.completedTransactions} ventas)</span>
+                    <span className="fw-bold me-1">{lot.producer_email}</span>
+                    <span className="text-muted">({lot.producer_email} ventas)</span>
                   </div>
                 </div>
-                <Link to={`/profile/${lot.seller?.id}`} className="btn btn-sm btn-outline-secondary ms-auto">
+                <Link to={`/profile/${lot.producer_email}`} className="btn btn-sm btn-outline-secondary ms-auto">
                   Ver Perfil
                 </Link>
               </div>
@@ -211,7 +212,7 @@ const LotDetail = () => {
               <div className="modal-body px-4 pb-4">
                 <OfferForm 
                   lotId={lot.id} 
-                  lotTitle={lot.title}
+                  lotTitle={lot.commodity_name}
                   onClose={() => setShowOfferModal(false)}
                   onSuccess={() => {
                     // Optional: refresh lot details or show success message

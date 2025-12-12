@@ -21,10 +21,6 @@ const LotList = () => {
   const fetchLots = async () => {
     try {
       setLoading(true)
-      // In a real app, we would pass filters to the API
-      // const data = await lotService.getAllLots(filters)
-      
-      // For now, let's use mock data if the API fails or is empty
       try {
         const data = await lotService.getAllLots()
         if (data && data.length > 0) {

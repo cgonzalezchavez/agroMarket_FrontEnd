@@ -35,7 +35,10 @@ const Profile = () => {
                 <label className="form-label fw-semibold">Rol</label>
                 <p className="form-control-plaintext">
                   <span className="badge bg-primary">
-                    {user?.role === 'seller' ? 'Vendedor' : 'Comprador'}
+                    {user?.role === 'PRODUCER' ? 'Productor' : 
+                     user?.role === 'BUYER' ? 'Comprador' :
+                     user?.role === 'ADMIN' ? 'Administrador' :
+                     user?.role === 'BANK' ? 'Banco' : user?.role}
                   </span>
                 </p>
               </div>
